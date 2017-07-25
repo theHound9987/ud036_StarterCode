@@ -2,6 +2,8 @@ import webbrowser
 import os
 import re
 
+from media import Movie
+
 
 # Styles and scripting for the page
 main_page_head = '''
