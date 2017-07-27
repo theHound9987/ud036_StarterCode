@@ -4,6 +4,21 @@ import re
 
 from media import Movie
 
+movies = [
+    Movie("ATOMIC BLONDE",
+            "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents."
+            ,"https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/193480/abl_rtdadv1sheet_rgb_1.jpg",
+            "https://youtu.be/yIUube1pSC0"),
+    Movie("Spider-Man: Homecoming",
+            "Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in New York City while fighting crime as his superhero alter ego Spider-Man when a new threat emerges.",
+            "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/198538/sog_dom_online_tsr_1sht_aoj.jpg",
+            "https://youtu.be/U0D3AOldjMU"),
+    Movie("War for the Planet of the Apes",
+          "After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind.",
+          "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/192073/wftpota_poster.jpg",
+          "https://youtu.be/qxjPjPzQ1iU")
+]
+
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -137,16 +152,16 @@ def create_movie_tiles_content(movies):
     for movie in movies:
         # Extract the youtube ID from the url
         youtube_id_match = re.search(
-            r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
+            r'(?<=v=)[^&#]+', movie.trailerURL)
         youtube_id_match = youtube_id_match or re.search(
-            r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
+            r'(?<=be/)[^&#]+', movie.trailerURL)
         trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
-            poster_image_url=movie.poster_image_url,
+            poster_image_url=movie.posterURL,
             trailer_youtube_id=trailer_youtube_id
         )
     return content
