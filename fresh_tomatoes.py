@@ -4,22 +4,6 @@ import re
 
 from media import Movie
 
-movies = [
-    Movie("ATOMIC BLONDE",
-            "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents."
-            ,"https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/193480/abl_rtdadv1sheet_rgb_1.jpg",
-            "https://youtu.be/yIUube1pSC0"),
-    Movie("Spider-Man: Homecoming",
-            "Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in New York City while fighting crime as his superhero alter ego Spider-Man when a new threat emerges.",
-            "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/198538/sog_dom_online_tsr_1sht_aoj.jpg",
-            "https://youtu.be/U0D3AOldjMU"),
-    Movie("War for the Planet of the Apes",
-          "After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind.",
-          "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/192073/wftpota_poster.jpg",
-          "https://youtu.be/qxjPjPzQ1iU")
-]
-
-
 # Styles and scripting for the page
 main_page_head = '''
 <!DOCTYPE html>
@@ -182,3 +166,23 @@ def open_movies_page(movies):
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
+
+movies = [
+    Movie("ATOMIC BLONDE",
+            "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents."
+            ,"https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/193480/abl_rtdadv1sheet_rgb_1.jpg",
+            "https://youtu.be/yIUube1pSC0"),
+    Movie("Spider-Man: Homecoming",
+            "Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in New York City while fighting crime as his superhero alter ego Spider-Man when a new threat emerges.",
+            "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/198538/sog_dom_online_tsr_1sht_aoj.jpg",
+            "https://youtu.be/U0D3AOldjMU"),
+    Movie("War for the Planet of the Apes",
+          "After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind.",
+          "https://images.fandango.com/r1.0.42/ImageRenderer/164/250/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/192073/wftpota_poster.jpg",
+          "https://youtu.be/qxjPjPzQ1iU")
+]
+
+
+create_movie_tiles_content(movies)
+
+open_movies_page(movies)
